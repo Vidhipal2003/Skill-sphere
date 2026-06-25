@@ -1,0 +1,34 @@
+{% extends 'student_base.html' %}
+{% load static %}
+{% block content %}
+<div class="row py-2">
+  <p class="fs-3 text-center">Your <b class="text-mycolor1">Profile </b></p>
+    <div class="col-sm-10 mx-auto">
+        <div class="row py-5">
+          <div class="col-sm-6 mx-auto ">
+            <div class="card position-relative shadow-lg rounded-3 mt-5 mb-5 border border-0 " style="min-height:200px;">
+              <img src="{% static 'images/card1.png' %}" class="img-fluid rounded-circle border border-dark border-5 p-2 profileimg position-absolute top-0 start-50 translate-middle" />
+              <h3 class="text-center username"><b class="text-mycolor2">Vidhi</b></h3>
+              <p class="text-center m-0">vidhipal8858@gmail.com</p>
+              <p class="text-center mt-1">
+                <i class="fa-brands fa-facebook ic"></i>
+                <i class="fa-brands fa-instagram ic"></i>
+                <i class="fa-brands fa-twitter ic"></i>
+                <i class="fa-brands fa-linkedin ic"></i>
+              </p>
+                  <div class="row g-0 py-1 ps-5">
+                    <div class="col-sm-3 ps-3"><i class="fa-solid fa-phone"></i> <b>Mob No</b> </div> <div class="col-sm-9">9519853951</div>
+                  </div>   
+                  <div class="row g-0 py-1 ps-5">
+                    <div class="col-sm-3 ps-3"><i class="fa-solid fa-address-book"></i> <b>Branch</b> </div> <div class="col-sm-9">Artificial intelligence and data science</div>
+                  </div>  
+                  <div class="row g-0 py-1 ps-5">
+                    <div class="col-sm-3 ps-3"><i class="fa-solid fa-location-dot"></i> <b>Address</b> </div> <div class="col-sm-9">varanasi uttar pradesh</div>
+                  </div> 
+                  <div class="text-center mt-4 mb-4"><a class="btn bg-mycolor1 text-light " style="text-decoration: none;"><i class="fa-solid fa-pencil"></i>Edit Profile</a></div> 
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+  {% endblock %}

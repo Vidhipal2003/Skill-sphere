@@ -1,0 +1,44 @@
+{% extends 'student_base.html' %}
+{% load static %}
+{% block content %}
+<div class="row heading my-2">
+    <div class="text-center fs-3">video<b class="text-mycolor2">lecture</b>
+    <hr class="w-25 mx-auto">
+    Lorem ipsum hic vel architecto sint nihil tempora. Labore, maxime.
+
+</div>
+</div>
+<!--heading end-->
+<div class="row">
+    <div class="col-md-11 mx-auto shadow-lg my-3">
+        <div class="row">
+            {% for r in vdo %}
+            <div class="col-md-6">
+                 <!--start lecture card-->
+        <div class="card mb-3" border-0 shadow-lg my-2>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <iframe class="img-thumbnail" src="{{r.vlink}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="col-md-8">
+        
+      <div class="card-body">
+        <h5 class="card-title">{{r.title}}</h5>
+        <p class="card-text">{{r.video_info}}</p>
+        <p class="card-text"><b class="text-body-secondary">
+          <b class="text-mycolor1"></b>
+        <i class="fa-solid fa-calander"></i>posted date:28:07-2025</b>{{r.posted_date}}
+      </small>
+      <span class="badge bg-mycolor21 float-end text-light">{{r.category}}</span>
+    </p>
+      </div>
+    </div>
+  </div>
+</div>
+         <!---end lecture card--->
+            </div>
+{% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

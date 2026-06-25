@@ -1,0 +1,44 @@
+{% extends 'student_base.html' %}
+{% load static %}
+{% block content %}
+{% if not request.session.email %}
+<script>
+alert("You have to login first");location.href="/login"
+</script>
+{% endif %}
+<div class="row heading">
+    <div class="text-center fs-3">lecture<b class="text-mycolor1">cat
+        <i class="fa-solid fa-key fa-spin lic"></i>
+        </b>
+        <hr class="w-50 mx-auto">
+        Lorem Ipsum sit amet consecuter adipiscing elit.
+    </div>
+
+</div>
+<!----heading end-->
+<div class="row">
+    <div class="col-sm-10 bg-light mx-auto">
+        <div class="row">
+            <!--start catrgory-->
+            <div class="col-sm-3 p-1">
+                <div class="card shadow-lg p-2 mb-3">
+                    <span class="position-absolute top-0 start-50 translate-middle btn bg-mycolor1">JAVA</span>
+                    
+                    <img class="card-img-top" src="{% static 'images/javaimg.png' %}"/>
+                
+                </div>
+            
+            
+                <div class="card shadow-lg p-2 mb-3">
+                    <span class="position-absolute top-0 start-50 translate-middle btn bg-mycolor1">PHP</span>
+                    
+                    <img class="card-img-top" src="{% static 'images/php.png' %}"/>
+                </div>
+                
+             <!--end catrgory-->
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

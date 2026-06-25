@@ -1,0 +1,100 @@
+{% extends 'student_base.html' %}
+{% load static %}
+{% block content %}
+{% if not request.session.email %}
+<script>
+alert("You have to login first");location.href="/login"
+</script>
+{% endif %}
+<!--Dashboard Start-->
+<div class="row py-2">
+<p class="fs-3 text-center ">Welcome, <b class="text-mycolor1">Vidhi</b></p>
+  <div class="col-sm-10 mx-auto">
+          <div class="row py-3">
+              <!--Dashboard card start-->
+                 <div class="col-sm-3 mb-2 dashboard">
+                    <a href="#">
+                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
+                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#58e953;"></i></div>
+                         <h4 class="text-center mb-5"> Profile</h4>
+                      </div>
+                    </a>
+                 </div>              
+             <!--Dashboard card end--> 
+             <!--Dashboard card start-->
+                 <div class="col-sm-3 mb-2 dashboard">
+                    <a href="#">
+                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
+                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#ea3f3f;"></i></div>
+                         <h4 class="text-center mb-5"> Profile</h4>
+                      </div>
+                    </a>
+                 </div>              
+             <!--Dashboard card end--> 
+             <!--Dashboard card start-->
+                 <div class="col-sm-3 mb-2 dashboard">
+                    <a href="#">
+                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
+                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#5ba7ea;"></i></div>
+                         <h4 class="text-center mb-5"> Profile</h4>
+                      </div>
+                    </a>
+                 </div>              
+             <!--Dashboard card end--> 
+             <!--Dashboard card start-->
+                 <div class="col-sm-3 mb-2 dashboard">
+                    <a href="#">
+                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
+                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#c5ee4a;"></i></div>
+                         <h4 class="text-center mb-5"> Profile</h4>
+                      </div>
+                    </a>
+                 </div>              
+             <!--Dashboard card end--> 
+          </div>
+          <div class="row py-3">
+              <!--Dashboard card start-->
+                 <div class="col-sm-3 mb-2 dashboard">
+                    <a href="#">
+                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
+                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#5f40ea;"></i></div>
+                         <h4 class="text-center mb-5"> Profile</h4>
+                      </div>
+                    </a>
+                 </div>              
+             <!--Dashboard card end--> 
+             <!--Dashboard card start-->
+                 <div class="col-sm-3 mb-2 dashboard">
+                    <a href="#">
+                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
+                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#e1ed42;"></i></div>
+                         <h4 class="text-center mb-5"> Profile</h4>
+                      </div>
+                    </a>
+                 </div>              
+             <!--Dashboard card end--> 
+             <!--Dashboard card start-->
+                 <div class="col-sm-3 mb-2 dashboard">
+                    <a href="#">
+                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
+                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#af42ef;"></i></div>
+                         <h4 class="text-center mb-5"> Profile</h4>
+                      </div>
+                    </a>
+                 </div>              
+             <!--Dashboard card end--> 
+             <!--Dashboard card start-->
+                 <div class="col-sm-3 mb-2 dashboard">
+                    <a href="#">
+                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
+                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#f84dd0;"></i></div>
+                         <h4 class="text-center mb-5"> Profile</h4>
+                      </div>
+                    </a>
+                 </div>              
+             <!--Dashboard card end--> 
+          </div>
+   </div>
+</div>
+{% endblock %}
+<!--Dashboard end-->

@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="row py-5">
+    <div class="col-sm-10 mx-auto">
+        <div class="row g-4 align-items-start">
+            <div class="col-sm-7">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="text-muted">We would love to hear from you. Whether you have questions about our services, need support, or want to collaborate, our team is here to help.</p>
+
+                <div class="card about-card p-4 mt-4">
+                    <h5 class="mb-3">Get in Touch</h5>
+                    <p><i class="fa-solid fa-location-dot me-2 text-primary"></i> Sec-5, Vikas Nagar, Lucknow</p>
+                    <p><i class="fa-solid fa-phone me-2 text-primary"></i> +91 7081506585</p>
+                    <p><i class="fa-solid fa-envelope me-2 text-primary"></i> abc@gmail.com</p>
+                    <p><i class="fa-solid fa-clock me-2 text-primary"></i> Mon - Sat: 9:00 AM to 6:00 PM</p>
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+                <div class="card about-card p-4">
+                    <h5 class="mb-3">Send a Message</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" class="form-control" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" rows="4" placeholder="Write your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom btn-custom">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

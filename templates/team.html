@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="row py-5">
+    <div class="col-sm-10 mx-auto">
+        <div class="text-center mb-4">
+            <h2 class="section-title">Our Team</h2>
+            <p class="text-muted">A dedicated team of educators and developers working to make the platform helpful, inspiring, and reliable for students.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-sm-4">
+                <div class="card about-card text-center p-3">
+                    <img src="{% static 'images/pic6.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" style="width:140px; height:140px; object-fit:cover;" alt="Team member">
+                    <div class="card-body">
+                        <h5 class="card-title">Vidhi Pal</h5>
+                        <p class="text-muted">Python Developer</p>
+                        <p><i class="fa-brands fa-square-instagram ic text-primary"></i> <i class="fa-brands fa-square-twitter ic text-primary"></i> <i class="fa-brands fa-square-facebook ic text-primary"></i> <i class="fa-brands fa-square-youtube ic text-primary"></i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card about-card text-center p-3">
+                    <img src="{% static 'images/pic5.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" style="width:140px; height:140px; object-fit:cover;" alt="Team member">
+                    <div class="card-body">
+                        <h5 class="card-title">Aman Singh</h5>
+                        <p class="text-muted">UI/UX Designer</p>
+                        <p><i class="fa-brands fa-square-instagram ic text-primary"></i> <i class="fa-brands fa-square-twitter ic text-primary"></i> <i class="fa-brands fa-square-facebook ic text-primary"></i> <i class="fa-brands fa-square-youtube ic text-primary"></i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card about-card text-center p-3">
+                    <img src="{% static 'images/pic4.jpg' %}" class="card-img-top rounded-circle mx-auto mt-3" style="width:140px; height:140px; object-fit:cover;" alt="Team member">
+                    <div class="card-body">
+                        <h5 class="card-title">Riya Sharma</h5>
+                        <p class="text-muted">Content Specialist</p>
+                        <p><i class="fa-brands fa-square-instagram ic text-primary"></i> <i class="fa-brands fa-square-twitter ic text-primary"></i> <i class="fa-brands fa-square-facebook ic text-primary"></i> <i class="fa-brands fa-square-youtube ic text-primary"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
