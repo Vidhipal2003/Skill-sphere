@@ -30,10 +30,30 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.environ.get(
-    "ALLOWED_HOSTS",
-    "skillsphere-aenu.onrender.com,127.0.0.1,localhost",
-).split(",")
+RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
+if os.environ.get("ALLOWED_HOSTS"):
+    ALLOWED_HOSTS.extend(
+        [host.strip() for host in os.environ.get("ALLOWED_HOSTS").split(",") if host.strip()]
+    )
+
+if not DEBUG:
+    ALLOWED_HOSTS.append(".onrender.com")
+
+CSRF_TRUSTED_ORIGINS = []
+if os.environ.get("CSRF_TRUSTED_ORIGINS"):
+    CSRF_TRUSTED_ORIGINS = [
+        origin.strip() for origin in os.environ.get("CSRF_TRUSTED_ORIGINS").split(",") if origin.strip()
+    ]
+elif RENDER_EXTERNAL_HOSTNAME:
+    CSRF_TRUSTED_ORIGINS.append(f"https://{RENDER_EXTERNAL_HOSTNAME}")
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # Application definition
