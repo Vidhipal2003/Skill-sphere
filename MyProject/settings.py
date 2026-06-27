@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-wn=q3=!n*sel*2pxp@e39easr92n*dqs1^giolrr*nu2kfsfqc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['skillsphere-aenu.onrender.com']
+ALLOWED_HOSTS = ['skillsphere-aenu.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -124,6 +124,12 @@ STATIC_DIR = BASE_DIR / 'static'
 STATICFILES_DIRS = [STATIC_DIR]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+MEDIA_URL = '/'
+MEDIA_ROOT = BASE_DIR
+
+LOGIN_URL = '/login/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

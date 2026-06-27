@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: skillsphere
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn MyProject.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: DISABLE_COLLECTSTATIC
+        value: "0"

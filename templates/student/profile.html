@@ -1,41 +1,74 @@
 {% extends 'student_base.html' %}
 {% load static %}
 {% block content %}
-{% for r in userinfo %}
-<div class="row heading">
-    <div class="text-center fs-3">My <b class="text-mycolor1">Profile
-        <i class="fa-solid fa-key fa-spin lic"></i>
-        </b>
-        <hr class="w-50 mx-auto">
-        Lorem Ipsum sit amet consecuter adipiscing elit.
-    </div>
 
+{% for r in userinfo %}
+<div class="row mb-4">
+  <div class="col-sm-12 text-center">
+    <h2 class="fw-bold text-dark mb-1">My Profile Dashboard</h2>
+    <p class="text-muted">Manage your personal records, contact information, and registration metadata.</p>
+    <hr class="w-25 mx-auto border-secondary border-2 opacity-50">
+  </div>
 </div>
-<!----heading end-->
-<div class="row">
-    <div class="col-sm-8 mx-auto bg-light shadow-lg p-5 my-4">
-        <div class="card mb-3 border-0 p-3">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="{% static 'images/default.png '%}" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h1 class="card-title fs-1" style="font-family:Arial, Helvetica, sans-serif; font-size: 50px;">VIDHI PAL</h1>
-        <br class="card-text ">
-            <b><i class="fa-solid fa-mobile"></i>Mobile:</i></b>9876453662</br>
-            <b><i class="fa-solid fa-envelope"></i>Email:</b>vidhipal35@gmail.com<br/>
-            <b><i class="fa-solid fa-location-dot"></i>Address:</b>vikas nagar tedhi puliya ring road lucknow<br/>
-            
-        </p>
-        <p class="card-text"><small class="text-body-secondary">
-            <b>Registration date:</b>30-07-26
-        </small></p>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white p-4">
+      <div class="row align-items-center g-4">
+        <!-- Profile Picture Section -->
+        <div class="col-md-4 text-center">
+          <div class="position-relative d-inline-block">
+            {% if r.picture %}
+              <img src="/{{ r.picture }}" class="img-fluid rounded-circle border border-3 border-light shadow-sm" style="width: 160px; height: 160px; object-fit: cover;" alt="Profile Picture"/>
+            {% else %}
+              <img src="{% static 'images/default.png' %}" class="img-fluid rounded-circle border border-3 border-light shadow-sm" style="width: 160px; height: 160px; object-fit: cover;" alt="Default Avatar"/>
+            {% endif %}
+            <span class="position-absolute bottom-0 end-0 bg-success border border-white rounded-circle p-2" title="Active Account"></span>
+          </div>
+          <h5 class="fw-bold text-dark mt-3 mb-0">{{ r.name|upper }}</h5>
+          <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2 mt-2">{{ r.batch.batchname }}</span>
+        </div>
+        
+        <!-- Info Details Section -->
+        <div class="col-md-8 border-start border-light ps-md-4">
+          <h4 class="fw-bold text-dark mb-3">Registration Details</h4>
+          <div class="table-responsive">
+            <table class="table table-borderless align-middle mb-0">
+              <tr>
+                <td class="text-muted py-2" style="width: 130px;"><i class="fa-solid fa-user me-2 text-primary"></i>Full Name:</td>
+                <td class="fw-semibold py-2 text-dark">{{ r.name }}</td>
+              </tr>
+              <tr>
+                <td class="text-muted py-2"><i class="fa-solid fa-envelope me-2 text-primary"></i>Email Address:</td>
+                <td class="fw-semibold py-2 text-dark">{{ r.email }}</td>
+              </tr>
+              <tr>
+                <td class="text-muted py-2"><i class="fa-solid fa-mobile me-2 text-primary"></i>Mobile Number:</td>
+                <td class="fw-semibold py-2 text-dark">{{ r.mobile }}</td>
+              </tr>
+              <tr>
+                <td class="text-muted py-2"><i class="fa-solid fa-location-dot me-2 text-primary"></i>Address:</td>
+                <td class="fw-semibold py-2 text-dark">{{ r.address }}</td>
+              </tr>
+              <tr>
+                <td class="text-muted py-2"><i class="fa-solid fa-calendar-days me-2 text-primary"></i>Joined Date:</td>
+                <td class="fw-semibold py-2 text-dark">{{ r.regdate|date:"d-m-Y" }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+{% empty %}
+<div class="row justify-content-center">
+  <div class="col-12 text-center py-5">
+    <div class="text-muted">
+      <i class="fa-solid fa-triangle-exclamation fs-1 text-warning mb-3"></i>
+      <p class="fs-5 mb-0">Could not find any profile data associated with this session.</p>
     </div>
+  </div>
 </div>
 {% endfor %}
 

@@ -2,49 +2,99 @@
 {% load static %}
 {% block content %}
 
-{% if not request.session.email %}
-<script>
-alert("You have to login first");location.href="/login"
-</script>
-{% endif %}
-<div class="row heading my-2">
-    <div class="text-center fs-3">My<b class="text-mycolor2">Task</b>
-    <hr class="w-25 mx-auto">
-    Lorem ipsum hic vel architecto sint nihil tempora. Labore, maxime.
-
+<div class="row mb-4">
+  <div class="col-sm-12 text-center">
+    <h2 class="fw-bold text-dark mb-1">My Assignments & Tasks</h2>
+    <p class="text-muted">Review assignments issued by instructors, download guidelines, and upload your submissions.</p>
+    <hr class="w-25 mx-auto border-secondary border-2 opacity-50">
+  </div>
 </div>
-</div>
-<!--heading end-->
-<div class="row">
-    <form method="post" action="/student/tsubmitted/" enctype="multipart/form-data">
-        {% csrf_token %}
-    <div class="col-md-8 mx-auto">
-        <table class="table table-scripted">
-            <tr>
-            <th>Title/Description</th>
-            <th>Download task</th>
-            <th>Upload Task</th>
-            <th>submit</th>
-            </tr>
-            {% for r in data %}
-            <td>
-                <td>
-                <b>{{r.title}}</b>
-                <b>{{r.task_info | slice:50}}</b>
-                </td>
-                <td><a href="/{{r.taskfile}}" class="btn btn-danger"><i class="fa-solid fa-download"></i>Download</a></td>
-                    <td>
-                        <input type="file" name="fu">
-                        <input type="hidden" value="{{r.title}}" name="title"/>
-                        <input type="hidden" value="{{r.id}}" name="tid"/>
 
-
-                    </td>
-                    <td><input type="submit" class="btn btn-danger" value="Upload"></td>
-            </tr>
-            {% endfor %}
-        </table>
-    </form>
-    </div>
+<div class="row justify-content-center">
+  <div class="col-lg-10">
+    {% for r in data %}
+      <div class="card border-0 shadow-sm rounded-4 p-4 mb-4 hover-card transition-all" style="background: white;">
+        <div class="row align-items-center g-3">
+          <!-- Task Info -->
+          <div class="col-md-6">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge bg-light text-primary border border-primary px-3 rounded-pill">Task #{{ r.id }}</span>
+              <span class="small text-muted"><i class="fa-regular fa-calendar me-1"></i> Posted: {{ r.posted_date|date:"d-m-Y" }}</span>
+            </div>
+            <h4 class="fw-bold text-dark mb-2">{{ r.title }}</h4>
+            <p class="text-muted small mb-0">{{ r.task_info }}</p>
+          </div>
+          
+          <!-- Download & Submission Area -->
+          <div class="col-md-6 border-start border-light ps-md-4">
+            <div class="d-flex flex-column gap-3">
+              <!-- Download Task Document -->
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-muted small">Assignment File:</span>
+                {% if r.taskfile %}
+                  <a href="/{{ r.taskfile }}" class="btn btn-sm btn-outline-danger rounded-pill px-3" download>
+                    <i class="fa-solid fa-file-pdf me-1"></i> Download Details
+                  </a>
+                {% else %}
+                  <span class="text-muted small">No attachment file</span>
+                {% endif %}
+              </div>
+              
+              <!-- Submit / Submission Status -->
+              <div class="border-top pt-3">
+                {% if r.is_submitted %}
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                      <span class="badge bg-success-subtle text-success border border-success rounded-pill px-3 py-2">
+                        <i class="fa-solid fa-circle-check me-1"></i> Submitted Successfully
+                      </span>
+                    </div>
+                    <div>
+                      {% if r.marks is not None %}
+                        <span class="fw-bold text-dark">Grade: <span class="text-primary fs-5">{{ r.marks }}</span> / 100</span>
+                      {% else %}
+                        <span class="text-muted small font-italic"><i class="fa-solid fa-hourglass-half me-1"></i> Pending grading</span>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% else %}
+                  <form method="post" action="/student/tsubmitted/" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ r.title }}" name="title"/>
+                    <input type="hidden" value="{{ r.id }}" name="tid"/>
+                    
+                    <label class="form-label text-muted small mb-1">Upload Submission Document:</label>
+                    <div class="input-group">
+                      <input type="file" name="fu" required class="form-control form-control-sm rounded-start-pill"/>
+                      <button type="submit" class="btn btn-sm btn-primary-custom px-4 rounded-end-pill">
+                        <i class="fa-solid fa-cloud-arrow-up me-1"></i> Upload
+                      </button>
+                    </div>
+                  </form>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="text-center py-5">
+        <div class="text-muted">
+          <i class="fa-solid fa-tasks fs-1 mb-3"></i>
+          <p class="fs-5 mb-0">No assignments posted for your batch yet.</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
+
+<style>
+  .hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08) !important;
+  }
+</style>
 {% endblock %}

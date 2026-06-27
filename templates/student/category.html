@@ -1,59 +1,72 @@
 {% extends 'student_base.html' %}
 {% load static %}
 {% block content %}
-{% if not request.session.email %}
-<script>
-alert("You have to login first");location.href="/login"
-</script>
-{% endif %}
-<div class="row heading">
-    <div class="text-center fs-3">lecture<b class="text-mycolor1">video
-        <i class="fa-solid fa-key fa-spin lic"></i>
-        </b>
-        <hr class="w-50 mx-auto">
-        Lorem Ipsum sit amet consecuter adipiscing elit.
-    </div>
 
+<div class="row mb-4">
+  <div class="col-sm-12 text-center">
+    <h2 class="fw-bold text-dark mb-1">Browse Video Lectures</h2>
+    <p class="text-muted">Explore class recordings and tutorial resources by subject.</p>
+    <hr class="w-25 mx-auto border-secondary border-2 opacity-50">
+  </div>
 </div>
-<!----heading end-->
+
 <div class="row">
-  <div class="col-sm-10 mx-auto bg-light shadow-lg">
-    <div class="row">
-      <div class="col-sm-4">
-        <ul class="list-group">
-          <li class="list-group-item bg-mycolor1 fw-bold">CATEGORY</li>
-          <li class="list-group-item">PYTHON</li>
-
-        </ul>
-
+  <div class="col-md-4 mb-4">
+    <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+      <h5 class="fw-bold text-dark mb-3 border-bottom pb-2"><i class="fa-solid fa-list text-primary me-2"></i>Subject Categories</h5>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action border-0 rounded-3 mb-1 px-3 py-2 active bg-primary-custom">
+          Python Development
+        </a>
+        <a href="#" class="list-group-item list-group-item-action border-0 rounded-3 mb-1 px-3 py-2">
+          Java Enterprise
+        </a>
+        <a href="#" class="list-group-item list-group-item-action border-0 rounded-3 mb-1 px-3 py-2">
+          PHP & MySQL
+        </a>
       </div>
-      <div class="col-sm-8">
-        <!--start lecture card-->
-        <div class="card mb-3" border-0 shadow-lg my-2>
-  <div class="row g-0">
-    <div class="col-md-4">
-      <iframe class="img-thumbnail"  src="https://www.youtube.com/embed/wmN3m_JL4rc?si=jq5-MsRkVeRCOLeK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">PYTHON</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">
-          <b class="text-mycolor1"></b>
-        <i class="fa-solid fa-calander"></i>posted date:28:07-2025
-      </small>
-      <span class="badge bg-mycolor21 float-end text-light"></span>
-    </p>
+  </div>
+  
+  <div class="col-md-8">
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-3 hover-card transition-all" style="background: white;">
+      <div class="row g-0">
+        <div class="col-md-5">
+          <div class="ratio ratio-16x9">
+            <iframe 
+              src="https://www.youtube.com/embed/wmN3m_JL4rc?si=jq5-MsRkVeRCOLeK" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="card-body d-flex flex-column justify-content-between h-100 p-4">
+            <div>
+              <span class="badge bg-primary-subtle text-primary mb-2 rounded-pill px-3">Featured Lecture</span>
+              <h5 class="card-title fw-bold text-dark">Python Programming Fundamentals</h5>
+              <p class="card-text text-muted small">An introduction to foundational concepts in Python including loops, conditionals, functions, and data structures.</p>
+            </div>
+            <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-3">
+              <span class="small text-muted"><i class="fa-solid fa-calendar me-1"></i> Posted: 28-07-2025</span>
+              <a href="https://www.youtube.com/watch?v=wmN3m_JL4rc" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill px-3">Open YouTube</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-         <!---end lecture card--->
 
-
-      </div>
-    </div>
-
-  </div>
-</div>
+<style>
+  .hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08) !important;
+  }
+</style>
 {% endblock %}

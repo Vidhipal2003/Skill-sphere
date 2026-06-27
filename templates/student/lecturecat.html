@@ -1,44 +1,54 @@
 {% extends 'student_base.html' %}
 {% load static %}
 {% block content %}
-{% if not request.session.email %}
-<script>
-alert("You have to login first");location.href="/login"
-</script>
-{% endif %}
-<div class="row heading">
-    <div class="text-center fs-3">lecture<b class="text-mycolor1">cat
-        <i class="fa-solid fa-key fa-spin lic"></i>
-        </b>
-        <hr class="w-50 mx-auto">
-        Lorem Ipsum sit amet consecuter adipiscing elit.
-    </div>
 
+<div class="row mb-4">
+  <div class="col-sm-12 text-center">
+    <h2 class="fw-bold text-dark mb-1">Lecture Categories</h2>
+    <p class="text-muted">Select a topic below to view related recorded video lectures for your batch.</p>
+    <hr class="w-25 mx-auto border-secondary border-2 opacity-50">
+  </div>
 </div>
-<!----heading end-->
-<div class="row">
-    <div class="col-sm-10 bg-light mx-auto">
-        <div class="row">
-            <!--start catrgory-->
-            <div class="col-sm-3 p-1">
-                <div class="card shadow-lg p-2 mb-3">
-                    <span class="position-absolute top-0 start-50 translate-middle btn bg-mycolor1">JAVA</span>
-                    
-                    <img class="card-img-top" src="{% static 'images/javaimg.png' %}"/>
-                
-                </div>
-            
-            
-                <div class="card shadow-lg p-2 mb-3">
-                    <span class="position-absolute top-0 start-50 translate-middle btn bg-mycolor1">PHP</span>
-                    
-                    <img class="card-img-top" src="{% static 'images/php.png' %}"/>
-                </div>
-                
-             <!--end catrgory-->
+
+<div class="row g-4 justify-content-center">
+  {% for cat in categories %}
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden text-center hover-card transition-all" style="background: white;">
+        <div class="p-4 bg-light d-flex align-items-center justify-content-center border-bottom" style="height: 160px;">
+          {% if cat.picture %}
+            <img class="img-fluid rounded-3" src="/{{ cat.picture }}" style="max-height: 120px; object-fit: contain;" alt="{{ cat.title }}"/>
+          {% else %}
+            <img class="img-fluid rounded-3" src="{% static 'images/default.png' %}" style="max-height: 120px; object-fit: contain;" alt="Default Category"/>
+          {% endif %}
         </div>
-
+        <div class="card-body p-4 d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="fw-bold text-dark mb-1">{{ cat.title }}</h5>
+            <span class="badge bg-secondary-custom rounded-pill small px-3 mb-3">{{ cat.batch_name.batchname }}</span>
+          </div>
+          <a href="/student/lectures/?cat_id={{ cat.id }}" class="btn btn-primary-custom w-100 rounded-pill">
+            <i class="fa-solid fa-circle-play me-1"></i> Open Lectures
+          </a>
+        </div>
+      </div>
     </div>
-
+  {% empty %}
+    <div class="col-12 text-center py-5">
+      <div class="text-muted">
+        <i class="fa-regular fa-folder-open fs-1 mb-3"></i>
+        <p class="fs-5 mb-0">No lecture categories available for your current batch.</p>
+      </div>
+    </div>
+  {% endfor %}
 </div>
+
+<style>
+  .hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08) !important;
+  }
+</style>
 {% endblock %}

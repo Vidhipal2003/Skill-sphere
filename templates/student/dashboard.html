@@ -1,100 +1,116 @@
 {% extends 'student_base.html' %}
 {% load static %}
 {% block content %}
-{% if not request.session.email %}
-<script>
-alert("You have to login first");location.href="/login"
-</script>
-{% endif %}
-<!--Dashboard Start-->
-<div class="row py-2">
-<p class="fs-3 text-center ">Welcome, <b class="text-mycolor1">Vidhi</b></p>
-  <div class="col-sm-10 mx-auto">
-          <div class="row py-3">
-              <!--Dashboard card start-->
-                 <div class="col-sm-3 mb-2 dashboard">
-                    <a href="#">
-                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
-                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#58e953;"></i></div>
-                         <h4 class="text-center mb-5"> Profile</h4>
-                      </div>
-                    </a>
-                 </div>              
-             <!--Dashboard card end--> 
-             <!--Dashboard card start-->
-                 <div class="col-sm-3 mb-2 dashboard">
-                    <a href="#">
-                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
-                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#ea3f3f;"></i></div>
-                         <h4 class="text-center mb-5"> Profile</h4>
-                      </div>
-                    </a>
-                 </div>              
-             <!--Dashboard card end--> 
-             <!--Dashboard card start-->
-                 <div class="col-sm-3 mb-2 dashboard">
-                    <a href="#">
-                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
-                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#5ba7ea;"></i></div>
-                         <h4 class="text-center mb-5"> Profile</h4>
-                      </div>
-                    </a>
-                 </div>              
-             <!--Dashboard card end--> 
-             <!--Dashboard card start-->
-                 <div class="col-sm-3 mb-2 dashboard">
-                    <a href="#">
-                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
-                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#c5ee4a;"></i></div>
-                         <h4 class="text-center mb-5"> Profile</h4>
-                      </div>
-                    </a>
-                 </div>              
-             <!--Dashboard card end--> 
-          </div>
-          <div class="row py-3">
-              <!--Dashboard card start-->
-                 <div class="col-sm-3 mb-2 dashboard">
-                    <a href="#">
-                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
-                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#5f40ea;"></i></div>
-                         <h4 class="text-center mb-5"> Profile</h4>
-                      </div>
-                    </a>
-                 </div>              
-             <!--Dashboard card end--> 
-             <!--Dashboard card start-->
-                 <div class="col-sm-3 mb-2 dashboard">
-                    <a href="#">
-                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
-                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#e1ed42;"></i></div>
-                         <h4 class="text-center mb-5"> Profile</h4>
-                      </div>
-                    </a>
-                 </div>              
-             <!--Dashboard card end--> 
-             <!--Dashboard card start-->
-                 <div class="col-sm-3 mb-2 dashboard">
-                    <a href="#">
-                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
-                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#af42ef;"></i></div>
-                         <h4 class="text-center mb-5"> Profile</h4>
-                      </div>
-                    </a>
-                 </div>              
-             <!--Dashboard card end--> 
-             <!--Dashboard card start-->
-                 <div class="col-sm-3 mb-2 dashboard">
-                    <a href="#">
-                      <div class="card mx-auto shadow-lg border-0 border w-75 rounded-4 dashboardcard">
-                         <div class="text-center dashdiv"> <i class="fa-solid fa-user dashboardic" style="background:#f84dd0;"></i></div>
-                         <h4 class="text-center mb-5"> Profile</h4>
-                      </div>
-                    </a>
-                 </div>              
-             <!--Dashboard card end--> 
-          </div>
-   </div>
+
+<!-- Dashboard Content -->
+<div class="row py-3">
+  <div class="col-sm-12 text-center mb-4">
+    <h2 class="fw-bold text-dark mb-1">Welcome back, <span class="text-primary-custom">{{ request.session.name }}</span>!</h2>
+    <p class="text-muted fs-5">Access your learning material, manage tasks, and stay on top of your courses.</p>
+    <hr class="w-25 mx-auto border-secondary border-2 opacity-50">
+  </div>
 </div>
+
+<div class="row g-4 justify-content-center">
+  <!-- Card 1: Profile -->
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="/student/profile/" class="text-decoration-none text-dark">
+      <div class="card h-100 border-0 shadow-sm p-4 text-center rounded-4 position-relative overflow-hidden hover-card transition-all" style="background: white;">
+        <div class="d-inline-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle shadow-sm" style="width: 70px; height: 70px; background: rgba(21, 101, 192, 0.1);">
+          <i class="fa-solid fa-user-gear fs-3 text-primary-custom"></i>
+        </div>
+        <h5 class="fw-bold mb-2">My Profile</h5>
+        <p class="text-muted small mb-0">View your registration data and personal details.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 2: Lectures -->
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="/student/lecturecat/" class="text-decoration-none text-dark">
+      <div class="card h-100 border-0 shadow-sm p-4 text-center rounded-4 position-relative overflow-hidden hover-card transition-all" style="background: white;">
+        <div class="d-inline-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle shadow-sm" style="width: 70px; height: 70px; background: rgba(245, 0, 87, 0.1);">
+          <i class="fa-solid fa-video fs-3 text-secondary-custom"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Video Lectures</h5>
+        <p class="text-muted small mb-0">Watch video lessons organized by categories.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 3: E-Notes -->
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="/student/enotes/" class="text-decoration-none text-dark">
+      <div class="card h-100 border-0 shadow-sm p-4 text-center rounded-4 position-relative overflow-hidden hover-card transition-all" style="background: white;">
+        <div class="d-inline-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle shadow-sm" style="width: 70px; height: 70px; background: rgba(16, 185, 129, 0.1);">
+          <i class="fa-solid fa-book-open fs-3 text-success"></i>
+        </div>
+        <h5 class="fw-bold mb-2">E-Notes</h5>
+        <p class="text-muted small mb-0">Download study material, PDFs, and notes.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 4: Tasks -->
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="/student/task/" class="text-decoration-none text-dark">
+      <div class="card h-100 border-0 shadow-sm p-4 text-center rounded-4 position-relative overflow-hidden hover-card transition-all" style="background: white;">
+        <div class="d-inline-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle shadow-sm" style="width: 70px; height: 70px; background: rgba(245, 158, 11, 0.1);">
+          <i class="fa-solid fa-list-check fs-3 text-warning"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Assignments</h5>
+        <p class="text-muted small mb-0">Check assignments, submit files, and review marks.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 5: Software Kit -->
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="/student/softwarekit/" class="text-decoration-none text-dark">
+      <div class="card h-100 border-0 shadow-sm p-4 text-center rounded-4 position-relative overflow-hidden hover-card transition-all" style="background: white;">
+        <div class="d-inline-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle shadow-sm" style="width: 70px; height: 70px; background: rgba(139, 92, 246, 0.1);">
+          <i class="fa-solid fa-cubes fs-3" style="color: #8b5cf6;"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Software Kit</h5>
+        <p class="text-muted small mb-0">Get required development tools and download setups.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 6: Home -->
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="/" class="text-decoration-none text-dark">
+      <div class="card h-100 border-0 shadow-sm p-4 text-center rounded-4 position-relative overflow-hidden hover-card transition-all" style="background: white;">
+        <div class="d-inline-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle shadow-sm" style="width: 70px; height: 70px; background: rgba(75, 85, 99, 0.1);">
+          <i class="fa-solid fa-house fs-3 text-secondary"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Public Home</h5>
+        <p class="text-muted small mb-0">Visit the primary public landing page of the website.</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Card 7: Log Out -->
+  <div class="col-6 col-md-4 col-lg-3">
+    <a href="/student/signout/" class="text-decoration-none text-dark">
+      <div class="card h-100 border-0 shadow-sm p-4 text-center rounded-4 position-relative overflow-hidden hover-card transition-all" style="background: white;">
+        <div class="d-inline-flex align-items-center justify-content-center mx-auto mb-3 rounded-circle shadow-sm" style="width: 70px; height: 70px; background: rgba(239, 68, 68, 0.1);">
+          <i class="fa-solid fa-right-from-bracket fs-3 text-danger"></i>
+        </div>
+        <h5 class="fw-bold mb-2">Logout</h5>
+        <p class="text-muted small mb-0">Exit your account and end the current session.</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+  .hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1) !important;
+  }
+</style>
 {% endblock %}
-<!--Dashboard end-->
